@@ -2,7 +2,8 @@
 placeholder: 'placeholder'
 port: 8080
 plugins:
-    - 'github'
+    - github
+    - naginator
 #   - 'ldap'
 #   - 'translation'
 #   - 'preSCMbuildstep'
