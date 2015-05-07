@@ -4,7 +4,7 @@
 - include: dependencies_deb.yml
 
 - name: Install Jenkins
-  apt: name=jenkins state=latest
+  apt: name=jenkins state=latest update_cache=yes
   register: jenkins_install
 
 - include: config.yml
