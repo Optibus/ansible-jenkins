@@ -23,3 +23,24 @@
   when: jenkins_updates.changed
   notify:
     - 'Restart Jenkins'
+- name: Install virtualenv
+  pip:
+      name: virtualenv
+  sudo: yes
+- name: Download jenkinsstatus tool
+  sudo: no
+  git:
+      repo: https://github.com/Optibus/jenkins-status.git
+      dest: /home/ubuntu/jenkins-status
+      accept_hostkey: yes
+      force: yes
+      version: master
+- name: Install jenkinsstatus tool
+  sudo: no
+  pip:
+      virtualenv: /home/ubuntu/venv
+      requirements: /home/ubuntu/jenkins-status/requirements.txt
+- pip:
+      extra_args: -e
+      name: /home/ubuntu/jenkins-status
+      virtualenv: /home/ubuntu/venv
